@@ -2,27 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flatiron Task Lister</title>
+  <title>Guest List Manager</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div id="main-content">
-    <h1>Task Lister Lite™️</h1>
-
-    <form id="create-task-form" action="" method="POST">
-      <label for="new-task-description">Task description:</label>
-      <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
-      <input type="submit" value="Create New Task">
-    </form>
-
-    <div id="list">
-      <h2>My Todos:</h2>
-      <ul id="tasks">
-      </ul>
+    <h1>Event Guest List</h1>
+    <!--Input Form-->
+    <div class ="guest-form">
+      <label class ="guestName"> Guest's Name:</label>
+      <input type ="text" id ="guestInput" placeholder ="Enter guest name"></input>
+      <select id = "guest-category">
+            <option value = "Friend">Friend</option>
+            <option value = "Family">Family</option>
+            <option value = "Colleague">Colleague</option>
+            <option value = Other>Other</option>
+      </select>
+      <button id ="addGuestButton"> Add Guest </button>
+      </div>
+      <!--Guest List Section-->
+      <div class = "container">
+        <h3 class ="text">
+          Guests List
+          <span class ="guestList">0/10</span>
+          <ul id="guestList" class="space-y-3"></ul>
+          <p class = "underline-text"></p>
+        </h3>
+        <div id ="guestList">
+        <!--Guest items will be added-->
+          <button id ="clearAllGuestsButton">Clear All Guests</button>
+        </div>
+      </div>
     </div>
 
-    <script src="./src/index.js"></script>
-  </div>
-
+<script src="./src/index.js"></script>
 </body>
 </html>

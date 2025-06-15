@@ -1,4 +1,4 @@
-html {
+ html { 
   height: 100%;
   width: 100%;
   font-family: "Titillium Web", sans-serif;
@@ -7,7 +7,7 @@ html {
 body {
   min-height: 100%;
   min-width: 100%;
-  background: linear-gradient(pink, violet);
+  background: linear-gradient(white,rgb(122, 118, 237));
 }
 
 button {
@@ -15,23 +15,126 @@ button {
 }
 
 #main-content {
-  position: relative;
+  position:relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:center;
   flex-direction: column;
-  border: 1px solid #333;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 15px 20px 18px 18px;
+  border: 1px solid rgb(122, 118, 237);
+  background: rgba(255, 255, 255, 0.949);
+  padding: 50px;
   border-radius: 5px;
-  box-shadow: 2px 5px 5px #333;
+  box-shadow: 2px 5px 5px rgb(122, 118, 237) ;
+  margin-top: 10rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  font-size:larger;
 }
 
-#list {
-  margin: 10px;
-  border: 1px solid #333;
-  background: rgba(255, 255, 255, 0.75);
-  padding: 15px 20px 18px 18px;
-  border-radius: 5px;
-  box-shadow: 2px 5px 5px #333;
+.guest-form{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  flex-direction:column;
+  padding:5px;
+  font-size:15px
 }
+#guest-category,#guestInput{
+  display:flex;
+  flex-direction:row;
+}
+.container{
+  background:whitesmoke ;
+  padding:1rem;
+  border-radius:8px;
+  margin-top:5px;
+  height: 100%;
+  width:100%;
+}
+#addGuestButton{
+  padding:3px;
+  font-size:8px;
+}
+#clearAllGuestsButton{
+  padding:5px;
+  font-size:10px;
+}
+.category-tag{
+  padding:4px 10px;
+  border-radius:8px;
+  font-size:0.75rem;
+  font-weight:600;
+  color:white;
+}
+.status-attending{ 
+  color:#10b981;
+  font-weight:600
+}
+.status-not-attending{
+  color:#ef4444;
+  font-weight:600;
+}
+@media (max-width:700px){
+  .container{
+    padding:20px;
+  }
+  .guest-item{
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-end;
+    gap:10px;
+  }
+  .guest-name{
+    width:100%
+  }
+  .guest-actions{
+    width:100%;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+  }
+}
+.friend{
+  border-left:5px solid #4caf50;
+}
+.famiy{
+  border-left:5px solid #2196f3;
+}
+.colleague{
+  border-left:5px solid #ff9800;
+} 
+.other{
+  border-left:5px solid grey
+}
+ul{
+  list-style:none;
+  padding:0;
+}
+li.guest{
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  background: #eee;
+  margin-bottom:0.5rem;
+  padding:0.75rem;
+  border-radius:4px;
+}
+.guest-info{
+  display:flex;
+  flex-direction: column;
+}
+.category{
+  font-size:0.85rem;
+  color:#666;
+}
+.timestamp{
+  font-size:0.75rem;
+  color:#999;
+}
+.guest-actions button{
+  margin-left:0.25rem;
+  padding:0.3rem 0.6rem;
+  font-size:0.85rem;
+}
+
