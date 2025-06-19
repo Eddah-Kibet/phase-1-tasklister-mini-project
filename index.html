@@ -1,40 +1,27 @@
-<!DOCTYPE HTML>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Guest List Manager</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./src/index.js" defer></script>
+  <link rel="stylesheet" href="./style.css" />
+  <title>Guest List</title>
 </head>
 <body>
-  <div id="main-content">
-    <h1>Event Guest List</h1>
-    <!--Input Form-->
-    <div class ="guest-form">
-      <label class ="guestName"> Guest's Name:</label>
-      <input type ="text" id ="guestInput" placeholder ="Enter guest name"></input>
-      <select id = "guest-category">
-            <option value = "Friend">Friend</option>
-            <option value = "Family">Family</option>
-            <option value = "Colleague">Colleague</option>
-            <option value = Other>Other</option>
+  <main class="container">
+    <h1>🎉 Guest List Manager</h1>
+    <form id="guest-form">
+      <input type="text" id="guest-name" placeholder="Guest name" required />
+      <select id="guest-category">
+        <option value="Friend">Friend</option>
+        <option value="Family">Family</option>
+        <option value="Colleague">Colleague</option>
       </select>
-      <button id ="addGuestButton"> Add Guest </button>
-      </div>
-      <!--Guest List Section-->
-      <div class = "container">
-        <h3 class ="text">
-          Guests List
-          <span class ="guestList">0/10</span>
-          <ul id="guestList" class="space-y-3"></ul>
-          <p class = "underline-text"></p>
-        </h3>
-        <div id ="guestList">
-        <!--Guest items will be added-->
-          <button id ="clearAllGuestsButton">Clear All Guests</button>
-        </div>
-      </div>
-    </div>
+      <button type="submit">Add Guest</button>
+    </form>
 
-<script src="./src/index.js"></script>
+    <ul id="guest-list"></ul>
+  </main>
+
 </body>
 </html>

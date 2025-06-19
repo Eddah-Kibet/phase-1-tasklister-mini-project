@@ -1,83 +1,69 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementsById("guest-form");
-  const guestNameInput = document.getElementsById("guestName");
-  const guestCategoryInput= document.getElementsById("guest-category");
-  const guestList = document.getElementById("guest-list");
+let form = document.querySelector('#guest-form')
+let nameInput = document.querySelector('#guest-name')
+let categoryInput = document.querySelector('#guest-category')
+let guestList = document.querySelector('#guest-list')
 
-  let guests;
+form.addEventListener('submit', function (event) {
+  event.preventDefault()
 
-  guestForm.addEventListener('submit')
-   function e(){
-    e.preventDefault();
+  let guestName = nameInput.value.trim()
+  let category = categoryInput.value
 
-      const name= guestNameInput.value.trim();
-      const category = guestCategoryInput.value;
+  if (guestName === '') {
+    alert('Please enter a name.')
+    return
+  }
 
-      if(!name) return;
+  if (guestList.children.length >= 10) {
+    alert('Guest list limit (10) reached!')
+    return
+  }
 
-      if (guests.lenth>= 10){
-          alert ("Guest limit reached (10 guests max)")
-          return;
-      }
+  let listItem = document.createElement('li')
 
-      const guest = {
-        id:Date.now(),
-        name,
-        category,
-        rsvp:false,
-        addedAt: new Date().toLocateTimeString()
-      };
-      guests.push(guest);
-      guestNameInput.value = "";
-      renderGuests();
+  // Create content container
+  let content = document.createElement('div')
+  content.innerHTML = `
+    <span class="category ${category}">${category}</span>
+    <strong>${guestName}</strong>
+    <div class="time">Added at ${new Date().toLocaleTimeString()}</div>
+
+`
+
+  // Action buttons container
+  let actions = document.createElement('div')
+  actions.classList.add('actions')
+
+  let deleteBtn = document.createElement('button')
+  deleteBtn.innerText = 'Remove'
+  deleteBtn.classList.add('delete-btn')
+
+  let rsvpBtn = document.createElement('button')
+  rsvpBtn.innerText = 'RSVP: Not Attending'
+  rsvpBtn.classList.add('rsvp-btn')
+
+  actions.appendChild(rsvpBtn)
+  actions.appendChild(deleteBtn)
+
+  listItem.appendChild(content)
+  listItem.appendChild(actions)
+  guestList.appendChild(listItem)
+
+  
+  form.reset()
+})
+
+guestList.addEventListener('click', function (e) {
+  if (e.target.classList.contains('delete-btn')) {
+    e.target.closest('li').remove()
+  }
+
+  if (e.target.classList.contains('rsvp-btn')) {
+    let current = e.target.innerText
+    if (current.includes('Not Attending')) {
+      e.target.innerText = 'RSVP: Attending'
+    } else {
+      e.target.innerText = 'RSVP: Not Attending'
     }
-
-  function renderGuests(){
-    guestList.innerHTML =""
-
-    guests.forEach(guest => {
-      const li = document.createElement('li');
-      li.classList.add(guest.category.toLowerCase())
-
-       const guestInfo = document.createElement('div');
-    guestInfo.classList.add('guest-info');
-    guestInfo.innerHTML = `
-      <strong>${guest.name}</strong> 
-      <em>(${guest.category})</em> - 
-      ${guest.rsvp ? "Attending" : "Not Attending"} 
-      <br><small>Added at ${guest.addedAt}</small>
-    `;
-
-    const toggleBtn = document.createElement('button');
-    toggleBtn.textContent = "Toggle RSVP";
-    toggleBtn.onclick = () => {
-      guest.rsvp = !guest.rsvp;
-      renderGuests();
-    };
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = "Remove";
-    deleteBtn.onclick = () => {
-      guests = guests.filter(g => g.id !== guest.id);
-      renderGuests();
-    };
-
-    const editBtn = document.createElement('button');
-    editBtn.textContent = "Edit";
-    editBtn.onclick = () => {
-      const newName = prompt("Edit guest name:", guest.name);
-      if (newName && newName.trim() !== "") {
-        guest.name = newName.trim();
-        renderGuests();
-      }
-    };
-
-    li.appendChild(guestInfo);
-    li.appendChild(toggleBtn);
-    li.appendChild(editBtn);
-    li.appendChild(deleteBtn);
-
-    guestList.appendChild(li);
-  });
-}
+  }
 })
