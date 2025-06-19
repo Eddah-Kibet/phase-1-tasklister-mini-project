@@ -1,3 +1,4 @@
+//Selecting elements
 let form = document.querySelector('#guest-form')
 let nameInput = document.querySelector('#guest-name')
 let categoryInput = document.querySelector('#guest-category')
